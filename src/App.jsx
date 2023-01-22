@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 import SearchMovies from "./Components/SearchMovies";
+// import MovieList from "./Components/MovieList";
 
 function App() {
 	return (
