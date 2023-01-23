@@ -6,14 +6,14 @@ const SearchMovies = (props) => {
 	const [movies, setMovies] = useState([]);
 
 	const queryHandler = (e) => {
-		setQuery((prevQuery) => {
-			return e.target.value;
-		});
+		setQuery(e.target.value);
 	};
 
 	const searchMovies = async (e) => {
 		e.preventDefault();
-
+		if (query === "") {
+			return;
+		}
 		const url = `https://api.themoviedb.org/3/search/movie?api_key=cc7ed9cd165eb504feaaca4e1f83cffe&language=en-US&query=${query}&page=1&include_adult=false`;
 
 		try {
@@ -42,7 +42,7 @@ const SearchMovies = (props) => {
 					className="input"
 					name="query"
 					type="text"
-					placeholder="Movie name..."
+					placeholder="Star Wars, Sunshine, etc"
 					value={query}
 					onChange={queryHandler}
 				></input>

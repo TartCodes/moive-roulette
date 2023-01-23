@@ -1,5 +1,6 @@
 html {
-	font-size: 10px;
+	font-size: 12px;
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 * {
@@ -40,6 +41,7 @@ small {
 	font-size: 1.2rem;
 	margin-bottom: 0.2rem;
 	text-transform: uppercase;
+	text-align: center;
 }
 
 .input {
@@ -49,6 +51,7 @@ small {
 	border-radius: 20px;
 	border: 1px solid #ddd;
 	margin-bottom: 1rem;
+	text-align: center;
 }
 
 .button {
