@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import MovieCard from "./MovieCard";
+import ErrorModal from "./ErrorModal";
 
 const SearchMovies = (props) => {
 	const [query, setQuery] = useState("");
 	const [movies, setMovies] = useState([]);
+	const [error, setError] = useState();
 
 	const queryHandler = (e) => {
 		setQuery(e.target.value);
@@ -12,6 +14,10 @@ const SearchMovies = (props) => {
 	const searchMovies = async (e) => {
 		e.preventDefault();
 		if (query === "") {
+			setError({
+				title: "Invalid input",
+				message: "Please enter a valid movie name."
+			});
 			return;
 		}
 		const url = `https://api.themoviedb.org/3/search/movie?api_key=cc7ed9cd165eb504feaaca4e1f83cffe&language=en-US&query=${query}&page=1&include_adult=false`;
@@ -26,8 +32,19 @@ const SearchMovies = (props) => {
 		}
 	};
 
+	const errorHandler = () => {
+		setError(null);
+	};
+
 	return (
 		<>
+			{error && (
+				<ErrorModal
+					title={error.title}
+					message={error.message}
+					onConfirm={errorHandler}
+				/>
+			)}
 			<form
 				onSubmit={searchMovies}
 				className="form"
